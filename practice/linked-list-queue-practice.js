@@ -34,12 +34,28 @@ class SinglyLinkedList {
         // Implement in O(n) and in O(1) time complexity
 
         // Your code here
+        let count = 1;
+
+        if (!this.head) return 0;
+
+        while (this.head.next !== null) {
+            count++
+            this.head = this.head.next;
+        }
+        return count;
     }
 
     sumOfNodes() {
         // Returns the sum of the values of all the nodes
 
         // Your code here
+        let sum = 0;
+
+        while (this.head.next !== null) {
+            sum += this.head.value;
+            this.head = this.head.next;
+        }
+        return sum + this.head.value;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -128,7 +144,7 @@ class DoublyLinkedList {
             // How do the implementation for singly and doubly vary if at all?
 
         // Your code here
-        
+
         // Write your hypothesis on the time complexity of this method here
     }
 
