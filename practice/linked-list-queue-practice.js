@@ -35,12 +35,12 @@ class SinglyLinkedList {
 
         // Your code here
         let count = 1;
-
+        let current = this.head
         if (!this.head) return 0;
 
-        while (this.head.next !== null) {
+        while (current.next !== null) {
             count++
-            this.head = this.head.next;
+            current = current.next;
         }
         return count;
     }
@@ -76,7 +76,7 @@ class SinglyLinkedList {
 
     findNthNode(n) {
         // Returns the node at the nth index from the head
-        
+
         let current = this.head;
         while (current && n !== 0) {
             current = current.next;
@@ -84,23 +84,32 @@ class SinglyLinkedList {
 
         }
         return current;
-        
-        
+
+
     }
 
         // Your code here
 
         // Write your hypothesis on the time complexity of this method here
-    
+
 
     findMid() {
         // Returns the middle node
         // Implement this as a singly linked list then as a doubly linked list
             // How do the implementation for singly and doubly vary if at all?
+        let curr = this.head;
+        // To get Index, we -1 from length, then halve, then remove extra decimals
+        const midIndex = Math.floor((this.listLength() - 1) / 2);
+        let index = 0;
 
-        // Your code here
+        while (index < midIndex && curr) {
+            if (index < 0) return null;
+            curr = curr.next;
+            index++;
+        }
 
-        // Write your hypothesis on the time complexity of this method here
+        if (index === midIndex && curr) return curr;
+        return null;
     }
 
 
@@ -124,6 +133,7 @@ class SinglyLinkedList {
     }
 
 }
+
 
 class DoublyLinkedNode {
     constructor(val) {
