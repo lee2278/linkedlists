@@ -62,19 +62,36 @@ class SinglyLinkedList {
 
     averageValue() {
         // Returns the average value of all the nodes
-
-        // Your code here
+        let sum = 0;
+        let count = 1
+        while (this.head.next !== null) {
+            sum += this.head.value;
+            this.head = this.head.next;
+            count++
+        }
+        return (sum + this.head.value) / count;
 
         // Write your hypothesis on the time complexity of this method here
     }
 
     findNthNode(n) {
         // Returns the node at the nth index from the head
+        
+        let current = this.head;
+        while (current && n !== 0) {
+            current = current.next;
+            n--;
+
+        }
+        return current;
+        
+        
+    }
 
         // Your code here
 
         // Write your hypothesis on the time complexity of this method here
-    }
+    
 
     findMid() {
         // Returns the middle node
