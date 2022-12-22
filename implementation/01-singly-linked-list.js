@@ -15,7 +15,12 @@ class SinglyLinkedList {
     addToHead(val) {
         // Add node of val to head of linked list
 
-        // Your code here
+        const newNode = new SinglyLinkedNode(val);
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length ++; 
+        return this;
+
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -24,36 +29,50 @@ class SinglyLinkedList {
         // There are bugs in this method! Fix them!!!
 
         // Add node of val to tail of linked list
-        let newNode = new SinglyLinkedNode(data);
+        let newNode = new SinglyLinkedNode(val);
+        this.length++;
+        if (!this.head) {
+            this.head = newNode;
+        } else {
 
-        if (!head) {
-            head = newNode;
-            return head;
+            let curr = this.head;
+            while (curr.next) {
+                curr = curr.next;
+            }
+            curr.next = newNode;
+    
         }
+        return this;
 
-        let curr = head;
-        while (curr) {
-            curr = current.next;
-        }
-        curr.next = newNode;
-
-        return head;
 
         // Write your hypothesis on the time complexity of this method here
     }
 
     removeFromHead() {
         // Remove node at head
-
-        // Your code here
-
+        if (!this.length) return undefined;
+        let current = this.head;
+        this.head = this.head.next;
+        this.length--;
+        return current;
         // Write your hypothesis on the time complexity of this method here
     }
 
     removeFromTail() {
         // Remove node at tail
+        if (!this.length) return undefined;
+        this.length--;
+        
+        if (this.length === 1)  {
+            this.head = null;
+        }
 
-        // Your code here
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+        }   
+        current = null;
+        
 
         // Write your hypothesis on the time complexity of this method here
     }
